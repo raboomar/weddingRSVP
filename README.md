@@ -8,7 +8,7 @@ I've chosen a variety of technologies to create a robust and scalable RSVP app:
 
 - **Infrastructure**: I'm using Terraform to define and provision the necessary infrastructure resources.
 - **Hosting**:  AWS.
-- **API**: AWS API Gateway triggers the APIs I've created.
+- **API**: AWS API Gateway triggers the Lambda.
 - **Data Storage**: Amazon S3 stores the Lambda code.
 - **Database**: For the database, I've opted for Amazon DynamoDB to securely store RSVP information.
 - **Frontend**: I'm building the user interface for my app using Angular.
