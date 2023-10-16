@@ -26,7 +26,6 @@ def lambda_handler(event, context):
             return response
         case "GET /guest/{id}":
             guest_id = event['pathParameters']['id']
-            print("GEVERF ",  guest_id)
             guest_list = fetch_guest(guest_id) 
             response['statusCode'] = 200
             response['body'] = json.dumps(guest_list)
