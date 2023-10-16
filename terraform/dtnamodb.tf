@@ -4,14 +4,8 @@ resource "aws_dynamodb_table" "rsvp_table" {
   read_capacity  = 5
   write_capacity = 5
   hash_key       = "id"
-  range_key      = "email"
   attribute {
     name = "id"
-    type = "S"
-  }
-
-  attribute {
-    name = "email"
     type = "S"
   }
 
