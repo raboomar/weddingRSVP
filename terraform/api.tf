@@ -15,13 +15,13 @@ resource "aws_apigatewayv2_integration" "rsvp_api_integration" {
 
 resource "aws_apigatewayv2_route" "rsvp_all_api_route" {
   api_id    = aws_apigatewayv2_api.rsvp_http_api_gw.id
-  route_key = "GET /items"
+  route_key = "GET /guest"
   target    = "integrations/${aws_apigatewayv2_integration.rsvp_api_integration.id}"
 }
 
 resource "aws_apigatewayv2_route" "read_item_api_route" {
   api_id    = aws_apigatewayv2_api.rsvp_http_api_gw.id
-  route_key = "GET /items/{id}"
+  route_key = "GET /guest/{id}"
   target    = "integrations/${aws_apigatewayv2_integration.rsvp_api_integration.id}"
 }
 
@@ -37,7 +37,7 @@ resource "aws_apigatewayv2_integration" "create_api_integration" {
 
 resource "aws_apigatewayv2_route" "create_api_route" {
   api_id    = aws_apigatewayv2_api.rsvp_http_api_gw.id
-  route_key = "POST /items"
+  route_key = "POST /guest"
   target    = "integrations/${aws_apigatewayv2_integration.create_api_integration.id}"
 }
 
@@ -53,7 +53,7 @@ resource "aws_apigatewayv2_integration" "update_api_integration" {
 
 resource "aws_apigatewayv2_route" "update_api_route" {
   api_id    = aws_apigatewayv2_api.rsvp_http_api_gw.id
-  route_key = "PUT /items/{id}"
+  route_key = "PUT /guest/{id}"
   target    = "integrations/${aws_apigatewayv2_integration.update_api_integration.id}"
 }
 
@@ -69,7 +69,7 @@ resource "aws_apigatewayv2_integration" "delete_api_integration" {
 
 resource "aws_apigatewayv2_route" "delete_api_route" {
   api_id    = aws_apigatewayv2_api.rsvp_http_api_gw.id
-  route_key = "DELETE /items/{id}"
+  route_key = "DELETE /guest/{id}"
   target    = "integrations/${aws_apigatewayv2_integration.delete_api_integration.id}"
 }
 
