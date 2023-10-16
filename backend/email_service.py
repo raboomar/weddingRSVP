@@ -1,10 +1,7 @@
-import boto3
+import os
 from email.message import EmailMessage
 import ssl
 import smtplib
-import os
-dynamo = boto3.client('dynamodb')
-
 
 def send_email (gust_email):
     sender = os.environ['email_sender']
@@ -26,7 +23,3 @@ def send_email (gust_email):
     with smtplib.SMTP_SSL('smtp.gmail.com', 465, context=context) as smtp:
         smtp.login(sender, password)
         smtp.sendmail(sender,receiver,em.as_string())
-
-def addNewGuest (guest):
-    send_email(guest['email'])
-    print('Adding guest....',guest)
