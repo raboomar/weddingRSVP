@@ -1,6 +1,12 @@
 resource "aws_apigatewayv2_api" "rsvp_http_api_gw" {
   name          = "rsvp-http-api"
   protocol_type = "HTTP"
+  cors_configuration {
+    allow_origins = ["*"]
+    allow_methods = ["POST", "GET", "OPTIONS"]
+    allow_headers = ["content-type"]
+    max_age       = 300
+  }
 }
 
 resource "aws_apigatewayv2_integration" "rsvp_api_integration" {
