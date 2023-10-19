@@ -7,9 +7,9 @@ Welcome to the RSVP app I'm creating for my upcoming wedding. This project is de
 I've chosen a variety of technologies to create a robust and scalable RSVP app:
 
 - **Infrastructure**: I'm using Terraform to define and provision the necessary infrastructure resources.
-- **Hosting**:  AWS.
-- **API**: AWS API Gateway triggers the Lambda.
-- **Data Storage**: Amazon S3 stores the Lambda code.
+- **Hosting**: The backend is hosted on AWS Lambda.
+- **API**: AWS API Gateway triggers the AWS Lambdas I've created.
+- **Data Storage**: Amazon S3 stores the Lambda code/Webapp.
 - **Database**: For the database, I've opted for Amazon DynamoDB to securely store RSVP information.
 - **Frontend**: I'm building the user interface for my app using Angular.
 
@@ -22,6 +22,16 @@ The RSVP app serves as a platform for my wedding guests to confirm their attenda
 2. **Data Storage**: The RSVP data submitted by my guests is securely stored in Amazon DynamoDB, ensuring data integrity.
 
 3. **Email Confirmation**: Once a guest submits their RSVP, an automatic email confirmation is sent to them. This email will contain important details about my wedding, including the venue address, date, and any other relevant information.
+
+## Three-Tier Architecture in AWS Cloud
+
+I've implemented a three-tier architecture in the AWS cloud to ensure the scalability and reliability of my RSVP app:
+
+1. **Presentation Tier**: This is the frontend built with Angular, where my wedding guests can access the dynamic RSVP form.
+
+2. **Application Tier**: The application logic is hosted on AWS Lambda. AWS API Gateway exposes endpoints to trigger my Lambda functions.
+
+3. **Data Tier**: Amazon DynamoDB serves as the database to securely store and retrieve RSVP data.
 
 ## Getting Started
 
@@ -43,4 +53,8 @@ To set up this project for my wedding, I'll follow these steps:
 
 8. **Testing and Deployment**: I'll thoroughly test my app and deploy it to make it accessible to my guests.
 
-I'm looking forward to my upcoming wedding and hope this RSVP app will make the planning process smoother. 🎉👰🤵
+## License
+
+I'm looking forward to my upcoming wedding and hope this RSVP app will make the planning process smoother. If I have any questions or need assistance, I won't hesitate to reach out.
+
+Wishing myself a wonderful wedding journey! 🎉👰🤵
