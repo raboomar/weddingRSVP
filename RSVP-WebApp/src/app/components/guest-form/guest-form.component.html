@@ -1,1 +1,116 @@
-<h1>guest-form works!</h1>
+<mat-progress-spinner
+  [mode]="'indeterminate'"
+  *ngIf="loading | async"
+></mat-progress-spinner>
+
+<div class="header--container">
+  <h1 class="header--text">﷽</h1>
+  <div class="header--details">
+    <h2>RSVP</h2>
+    <h2>The celebration of Rami and Dima</h2>
+  </div>
+  <h1 *ngIf="succuss">Thank you we look forward to seeing you.</h1>
+  <h2 *ngIf="succuss">
+    You should be receiving an email soon at {{ guestEmail }}
+  </h2>
+</div>
+
+<div *ngIf="!isLoading && !succuss">
+  <form class="guest-container" [formGroup]="guestForm">
+    <div formArrayName="guestName">
+      <div>
+        <div class="part--size--container">
+          <h2 class="party--size">Party size</h2>
+          <button
+            class="min-guest"
+            mat-icon-button
+            color="primary"
+            aria-label="Remove/clear"
+            (click)="removeOrClearEmail(getControls().length - 1)"
+            matTooltip="Remove"
+          >
+            <mat-icon>remove_circle_outline</mat-icon>
+          </button>
+          <button
+            class="add-person"
+            mat-icon-button
+            aria-label="Add"
+            (click)="addguestFormGroup()"
+            matTooltip="Add"
+          >
+            {{ getControls().length }}
+          </button>
+
+          <button
+            class="add-person"
+            mat-icon-button
+            color="primary"
+            aria-label="Add"
+            (click)="addguestFormGroup()"
+            matTooltip="Add"
+          >
+            <mat-icon>add_circle_outline</mat-icon>
+          </button>
+        </div>
+      </div>
+
+      <div class="email--input--container">
+        <mat-form-field appearance="outline">
+          <mat-label>Enter your email</mat-label>
+          <input
+            matInput
+            placeholder="pat@example.com"
+            [formControl]="email"
+            required
+          />
+          <mat-error *ngIf="email.invalid">{{ getErrorMessage() }}</mat-error>
+        </mat-form-field>
+      </div>
+      <div
+        class="guest--input-container"
+        *ngFor="let email of getControls(); let i = index"
+        [formGroupName]="i"
+      >
+        <div class="names">
+          <mat-form-field class="name--input--container" appearance="outline">
+            <mat-label>First name</mat-label>
+            <input
+              class="input-box"
+              required
+              minlength="1"
+              matInput
+              formControlName="firstName"
+            />
+            <mat-error *ngFor="let validation of validationMsgs.firstName">
+              {{ validation.message }}
+            </mat-error>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline" class="name--input--container">
+            <mat-label>Last name</mat-label>
+            <input
+              required
+              minlength="1"
+              matInput
+              formControlName="lastName"
+              placeholder="Last name"
+            />
+            <mat-error *ngFor="let validation of validationMsgs.firstName">
+              {{ validation.message }}
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+    </div>
+  </form>
+  <div class="btn--container">
+    <button
+      [disabled]="!guestForm.valid"
+      mat-raised-button
+      class="submit-btn"
+      (click)="addGuest()"
+    >
+      <h4>Submit</h4>
+    </button>
+  </div>
+</div>
