@@ -22,6 +22,7 @@ def add_new_guest (guest):
         Item={
             'id' : guestId,
             'email':guest['email'],
+            'dateRsvp': guest['date'],
             'guest': guest['guest']
         }
     )

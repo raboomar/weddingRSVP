@@ -6,15 +6,18 @@
 <div class="header--container">
   <h1 class="header--text">﷽</h1>
   <div class="header--details">
-    <h4>RSVP</h4>
-    <h3>The celebration of Rami and Dima</h3>
+    <h2>RSVP</h2>
+    <h2>The celebration of Rami and Dima</h2>
   </div>
-  <!-- <h1 *ngIf="succuss">Thank you we look forward to seeing you.</h1> -->
+  <h1 *ngIf="succuss">Thank you we look forward to seeing you.</h1>
+  <h2 *ngIf="succuss">
+    You should be receiving an email soon at {{ guestEmail }}
+  </h2>
 </div>
 
-<div>
+<div *ngIf="!isLoading && !succuss">
   <form class="guest-container" [formGroup]="guestForm">
-    <div formArrayName="name">
+    <div formArrayName="guestName">
       <div>
         <div class="part--size--container">
           <h2 class="party--size">Party size</h2>
@@ -83,7 +86,7 @@
             </mat-error>
           </mat-form-field>
 
-          <mat-form-field appearance="outline" class="input--name">
+          <mat-form-field appearance="outline" class="name--input--container">
             <mat-label>Last name</mat-label>
             <input
               required

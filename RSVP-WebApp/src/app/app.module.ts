@@ -1,16 +1,19 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { GuestFormComponent } from './components/guest-form/guest-form.component';
-import {MatProgressSpinnerModule} from '@angular/material/progress-spinner'
-import {MatIconModule} from '@angular/material/icon'
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import{MatInputModule} from '@angular/material/input';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { GuestFormComponent } from './components/guest-form/guest-form.component';
+import{MatInputModule} from '@angular/material/input';
+import {MatIconModule} from '@angular/material/icon'
 import {MatButtonModule} from '@angular/material/button'
 import {MatToolbarModule} from '@angular/material/toolbar'
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner'
+import { NetworkInterceptor } from './network/network.interceptor';
+
 
 @NgModule({
   declarations: [
@@ -28,9 +31,15 @@ import {MatToolbarModule} from '@angular/material/toolbar'
     MatInputModule,
     BrowserAnimationsModule,
     MatButtonModule,
-    MatToolbarModule
+    MatToolbarModule,
+    HttpClientModule  ],
+  providers: [{
+
+    provide: HTTP_INTERCEPTORS,
+    useClass: NetworkInterceptor,
+    multi:true
+  }
   ],
-  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { Guest } from 'src/app/model/guest.model';
+import { GuestService } from 'src/app/services/guest.service';
 import { SpinnerServiceService } from 'src/app/services/spinner.service';
 
 @Component({
@@ -8,31 +10,37 @@ import { SpinnerServiceService } from 'src/app/services/spinner.service';
   styleUrls: ['./guest-form.component.css']
 })
 export class GuestFormComponent {
+  guestEmail:string | null =''
+  isLoading:boolean = false
+  succuss:boolean =false
   loading = this.loader.loading$
+
   email = new FormControl('', [Validators.required, Validators.email]);
   public guestForm: FormGroup =new FormGroup({});
   public validationMsgs = {
-    'firstName': [{ type: 'name', message: 'Enter a name' }]
+    'firstName': [{ type: 'text', message: 'Enter a name' }]
   }
 
-  constructor( private formBuilder: FormBuilder, private loader: SpinnerServiceService) { }
+  constructor( private formBuilder: FormBuilder,
+     private loader: SpinnerServiceService,
+     private guestService:GuestService) { }
   ngOnInit() {
     this.guestForm = this.formBuilder.group({
-      name: this.formBuilder.array([this.createGuestFormGroup()])
+      guestName: this.formBuilder.array([this.createGuestFormGroup()])
     });
   }
 
   public removeOrClearEmail(i: number) {
-    const name = this.guestForm.get('name') as FormArray
-    if (name.length > 1) {
-      name.removeAt(i)
+    const guestName = this.guestForm.get('guestName') as FormArray
+    if (guestName.length > 1) {
+      guestName.removeAt(i)
     } else {
-      name.reset()
+      guestName.reset()
     }
   }
 
   public addguestFormGroup() {
-    const name = this.guestForm.get('name') as FormArray
+    const name = this.guestForm.get('guestName') as FormArray
     name.push(this.createGuestFormGroup())
   }
 
@@ -45,7 +53,7 @@ export class GuestFormComponent {
   }
 
   getControls() {
-    return (this.guestForm.get('name') as FormArray).controls;
+    return (this.guestForm.get('guestName') as FormArray).controls;
   }
 
   getErrorMessage() {
@@ -55,16 +63,17 @@ export class GuestFormComponent {
     return this.email.hasError('email') ? 'Not a valid email' : '';
   }
   addGuest(){
-
-    const guestForm = JSON.stringify({
+    this.guestEmail =this.email.value
+    const guestForm = {
       "email": this.email.value,
-      "guest":this.guestForm.value.name
+      "date": new Date().toString(),
+      "guest":this.guestForm.value.guestName
+    }
+    this.isLoading = true
+    this.guestService.addGuest(guestForm).subscribe(res=>{
+      this.isLoading = false
+      this.succuss = true
     })
-    // this.isLoading = true
-    // this.formService.addGuest(guestForm).subscribe(res=>{
-    //   this.isLoading = false
-    //   this.succuss = true
-    // })
   }
 
 }
