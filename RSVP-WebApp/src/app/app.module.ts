@@ -13,12 +13,13 @@ import {MatToolbarModule} from '@angular/material/toolbar'
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner'
 import { NetworkInterceptor } from './network/network.interceptor';
-
+import { GuestListComponent } from './components/guest-list/guest-list.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    GuestFormComponent
+    GuestFormComponent,
+    GuestListComponent
   ],
   imports: [
     BrowserModule,
