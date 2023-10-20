@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { GuestService } from 'src/app/services/guest.service';
 import { SpinnerServiceService } from 'src/app/services/spinner.service';
 
 @Component({
@@ -9,5 +10,14 @@ import { SpinnerServiceService } from 'src/app/services/spinner.service';
 export class GuestListComponent {
   loading = this.loader.loading$
   isLoading:boolean = false
-  constructor( private loader: SpinnerServiceService){}
+  constructor( private loader: SpinnerServiceService,
+    private guestService: GuestService){}
+
+    ngOnInit(): void {
+     this.guestService.fetchGuestList().subscribe(response=>{
+      console.log(response);
+
+     })
+
+    }
 }
