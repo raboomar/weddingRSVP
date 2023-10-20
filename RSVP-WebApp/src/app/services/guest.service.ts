@@ -16,14 +16,21 @@ export class GuestService {
   };
 
   addGuest (data:Guest):Observable<any>{
-    // `${environment.apiUrl}/saveGuestToSheet`
    return this.http
    .post<any>(
      `${environment.apiUrl}`,
      JSON.stringify(data),
      this.httpOptions
    ).pipe(retry(1), catchError(this.handleError))
- }
+  }
+
+  fetchGuestList ():Observable<any>{
+    return this.http
+    .get<any>(
+      `${environment.apiUrl}`,
+      this.httpOptions
+    ).pipe(retry(1), catchError(this.handleError))
+   }
 
  handleError(error: any) {
   let errorMessage = '';
