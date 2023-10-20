@@ -2,7 +2,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, catchError, retry, throwError } from 'rxjs';
 import { Guest } from '../model/guest.model';
-
+import { environment } from 'src/environments/environment';
 @Injectable({
   providedIn: 'root'
 })
@@ -19,7 +19,7 @@ export class GuestService {
     // `${environment.apiUrl}/saveGuestToSheet`
    return this.http
    .post<any>(
-     'https://v7gtcbe8lh.execute-api.us-east-1.amazonaws.com/guest',
+     `${environment.apiUrl}`,
      JSON.stringify(data),
      this.httpOptions
    ).pipe(retry(1), catchError(this.handleError))
