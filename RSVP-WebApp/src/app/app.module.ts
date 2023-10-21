@@ -14,7 +14,8 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner'
 import { NetworkInterceptor } from './network/network.interceptor';
 import { GuestListComponent } from './components/guest-list/guest-list.component';
-
+import { MatTableModule } from '@angular/material/table'
+import {MatPaginatorModule} from '@angular/material/paginator';
 @NgModule({
   declarations: [
     AppComponent,
@@ -33,7 +34,10 @@ import { GuestListComponent } from './components/guest-list/guest-list.component
     BrowserAnimationsModule,
     MatButtonModule,
     MatToolbarModule,
-    HttpClientModule  ],
+    HttpClientModule,
+    MatTableModule,
+    MatPaginatorModule
+    ],
   providers: [{
 
     provide: HTTP_INTERCEPTORS,

@@ -3,3 +3,17 @@
   padding-top: 25px;
   text-align: center;
 }
+.guest--list--table-container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.guest--list--table{
+  padding: 10px;
+  margin: 20px;
+}
+
+td ,th{
+  color: rgb(122, 98, 27)
+}
+

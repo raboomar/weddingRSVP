@@ -1,7 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, catchError, retry, throwError } from 'rxjs';
-import { Guest } from '../model/guest.model';
+import { Guest, InviteeList } from '../model/guest.model';
 import { environment } from 'src/environments/environment';
 @Injectable({
   providedIn: 'root'
@@ -24,7 +24,7 @@ export class GuestService {
    ).pipe(retry(1), catchError(this.handleError))
   }
 
-  fetchGuestList ():Observable<any>{
+  fetchGuestList ():Observable<InviteeList>{
     return this.http
     .get<any>(
       `${environment.apiUrl}`,
