@@ -47,7 +47,7 @@ mat-progress-spinner {
 .mat-mdc-progress-spinner {
   --mdc-circular-progress-active-indicator-color:  #7A621B !important;;
 }
-table{
+table,mat-paginator{
   background-color: rgba(0, 0, 0, 0)!important;
 }
 

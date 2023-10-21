@@ -15,7 +15,7 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner'
 import { NetworkInterceptor } from './network/network.interceptor';
 import { GuestListComponent } from './components/guest-list/guest-list.component';
 import { MatTableModule } from '@angular/material/table'
-import {MatTableDataSource} from '@angular/material/table'
+import {MatPaginatorModule} from '@angular/material/paginator';
 @NgModule({
   declarations: [
     AppComponent,
@@ -35,7 +35,8 @@ import {MatTableDataSource} from '@angular/material/table'
     MatButtonModule,
     MatToolbarModule,
     HttpClientModule,
-    MatTableModule
+    MatTableModule,
+    MatPaginatorModule
     ],
   providers: [{
 

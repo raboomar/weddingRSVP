@@ -7,13 +7,14 @@
   <h1 class="Guest--list--header--text">﷽</h1>
   <div class="Guest--list--header--details">
     <h2>Guest list</h2>
+    <h3>Total Guest: {{ totalGuest }}</h3>
   </div>
 </div>
 <div class="guest--list--table-container">
   <div class="guest--list--table">
     <table
       class="guest--list--table"
-      *ngIf="!isLoading"
+      *ngIf="!isLoading && dataSource.data.length !== 0"
       mat-table
       [dataSource]="dataSource"
       class="mat-elevation-z8"
@@ -56,5 +57,16 @@
       <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
       <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
     </table>
+    <div *ngIf="dataSource.data.length === 0">
+      <h3>No one has RSVP yet!</h3>
+    </div>
+    <mat-paginator
+      [length]="dataSource.data.length"
+      [pageSize]="10"
+      [pageSizeOptions]="[5, 10, 25, 100]"
+      aria-label="Select page"
+      (page)="handlePageEvent($event)"
+    >
+    </mat-paginator>
   </div>
 </div>
