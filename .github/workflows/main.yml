@@ -18,10 +18,10 @@ jobs:
 
       - name: Checkout
         uses: actions/checkout@v2
-
+        working-directory: ./RSVP-WebApp
       - name: Setup Node.js
         uses: actions/setup-node@v2
-        working-directory: ./RSVP-WebApp
+      
         with:
           node-version: 14
        
