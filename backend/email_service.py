@@ -10,7 +10,12 @@ def send_email (gust_email):
     subject = 'Thank you for RSVPing'
     print(sender,password,receiver )
     body = """
-    HIIIII WELCOME!!!!!
+     Thank you for RSVPing to the celebration of Rami and Dima
+     Thank you we look forward to seeing you.
+    
+      Date: June 2nd 2024 5:00pm
+      Location: Pinnacle Golf Club
+      1500 Pinnacle Club Dr, Grove City, OH 43123     
     """
     em = EmailMessage()
     em['From'] = sender
