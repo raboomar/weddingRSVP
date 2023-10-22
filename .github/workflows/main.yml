@@ -37,4 +37,4 @@ jobs:
           ls -l ./RSVP-WebApp/dist
       - name: Deploy
         if: success()
-        run: aws s3 sync ./RSVP-WebApp/dist/rsvp s3://dima-rami-rsvp-app
+        run: aws s3 sync ./RSVP-WebApp/dist/rsvp-web-app s3://dima-rami-rsvp-app
