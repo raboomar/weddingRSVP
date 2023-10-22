@@ -31,7 +31,10 @@ jobs:
       - name: Build
         working-directory: ./RSVP-WebApp
         run: npm run build
-
+      - name: Debug
+        run: |
+          ls -l ./RSVP-WebApp
+          ls -l ./RSVP-WebApp/dist
       - name: Deploy
         if: success()
         run: aws s3 sync ./dist/dima-rami-rsvp-app.s3 s3://dima-rami-rsvp-app.s3
