@@ -53,8 +53,4 @@ To set up this project for my wedding, I'll follow these steps:
 
 8. **Testing and Deployment**: I'll thoroughly test my app and deploy it to make it accessible to my guests.
 
-## License
-
-I'm looking forward to my upcoming wedding and hope this RSVP app will make the planning process smoother. If I have any questions or need assistance, I won't hesitate to reach out.
-
-Wishing myself a wonderful wedding journey! 🎉👰🤵
+I'm looking forward to my upcoming wedding and hope this RSVP app will make the planning process smoother. 
