@@ -16,6 +16,7 @@ import { NetworkInterceptor } from './network/network.interceptor';
 import { GuestListComponent } from './components/guest-list/guest-list.component';
 import { MatTableModule } from '@angular/material/table'
 import {MatPaginatorModule} from '@angular/material/paginator';
+
 @NgModule({
   declarations: [
     AppComponent,

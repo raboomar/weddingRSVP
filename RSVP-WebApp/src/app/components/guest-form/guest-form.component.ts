@@ -40,15 +40,18 @@ export class GuestFormComponent {
   }
 
   public addguestFormGroup() {
-    const name = this.guestForm.get('guestName') as FormArray
-    name.push(this.createGuestFormGroup())
+    const guestName = this.guestForm.get('guestName') as FormArray
+    if (guestName.length <= 6){
+      const newGuest = this.guestForm.get('guestName') as FormArray
+      newGuest.push(this.createGuestFormGroup())
+    }
+
   }
 
   private createGuestFormGroup(): FormGroup {
     return new FormGroup({
       'firstName': new FormControl('', Validators.min(1)),
       'lastName': new FormControl('', Validators.required)
-
     })
   }
 
@@ -69,8 +72,8 @@ export class GuestFormComponent {
       "date": new Date().toString(),
       "guest":this.guestForm.value.guestName
     }
-    this.isLoading = true
-    this.guestService.addGuest(guestForm).subscribe(res=>{
+      this.isLoading = true
+      this.guestService.addGuest(guestForm).subscribe(res=>{
       this.isLoading = false
       this.succuss = true
     })
