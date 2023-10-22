@@ -29,8 +29,6 @@ export class GuestListComponent {
         this.dataSource.data = response;
         this.countTotalGuest(response);
         this.isLoading = false;
-        console.log(response);
-
       })
     }
     ngAfterViewInit() {
