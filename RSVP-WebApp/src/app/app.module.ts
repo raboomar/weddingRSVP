@@ -16,12 +16,14 @@ import { NetworkInterceptor } from './network/network.interceptor';
 import { GuestListComponent } from './components/guest-list/guest-list.component';
 import { MatTableModule } from '@angular/material/table'
 import {MatPaginatorModule} from '@angular/material/paginator';
+import { ViewGuestComponent } from './components/view-guest/view-guest.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     GuestFormComponent,
-    GuestListComponent
+    GuestListComponent,
+    ViewGuestComponent
   ],
   imports: [
     BrowserModule,
