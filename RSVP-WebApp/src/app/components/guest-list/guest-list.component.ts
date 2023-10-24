@@ -4,6 +4,7 @@ import { SpinnerServiceService } from 'src/app/services/spinner.service';
 import {MatTableDataSource} from '@angular/material/table'
 import { InviteeList } from 'src/app/model/guest.model';
 import {MatPaginator}  from'@angular/material/paginator'
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-guest-list',
   templateUrl: './guest-list.component.html',
@@ -20,7 +21,8 @@ export class GuestListComponent {
   guestList:InviteeList[] = [];
   totalGuest:number=0;
   constructor( private loader: SpinnerServiceService,
-    private guestService: GuestService){
+    private guestService: GuestService,
+    private router: Router){
     }
 
     ngOnInit(): void {
@@ -36,6 +38,7 @@ export class GuestListComponent {
   }
 
     viewGuestDetails(guestId:string){
+      this.router.navigate(['/view-guest'])
       console.log(guestId);
 
     }
