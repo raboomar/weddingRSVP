@@ -38,9 +38,7 @@ export class GuestListComponent {
   }
 
     viewGuestDetails(guestId:string){
-      this.router.navigate(['/view-guest'])
-      console.log(guestId);
-
+      this.router.navigate([`/view-guest/${guestId}`])
     }
 
     countTotalGuest(guestList:InviteeList[]){

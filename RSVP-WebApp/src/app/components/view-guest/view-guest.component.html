@@ -1,1 +1,32 @@
-<p>view-guest works!</p>
+<mat-progress-spinner
+  [mode]="'indeterminate'"
+  *ngIf="loading | async"
+></mat-progress-spinner>
+
+<div class="guest--detail--header--container">
+  <h1 class="guest--detail--header--text">﷽</h1>
+  <div class="guest--detail--header--details">
+    <h2>Guest Details</h2>
+  </div>
+  <div *ngIf="!isLoading">
+    <mat-list role="list" *ngFor="let guestDetails of guest">
+      <mat-list-item role="listitem">
+        <span matListItemTitle>Date Rsvp:</span>
+        <span matListItemLine
+          >{{ guestDetails.dateRsvp | date : "MMM d, y, h:mm:ss a" }}
+        </span>
+      </mat-list-item>
+      <mat-list-item role="listitem">
+        <span matListItemTitle>Email:</span>
+        <span matListItemLine>{{ guestDetails.email }} </span>
+      </mat-list-item>
+      <span>Guest: </span>
+      <mat-list *ngFor="let guestDetail of guestDetails.guest" role="list">
+        <mat-list-item role="listitem">
+          {{ guestDetail.firstName | titlecase }}
+          {{ guestDetail.lastName | titlecase }}
+        </mat-list-item>
+      </mat-list>
+    </mat-list>
+  </div>
+</div>
