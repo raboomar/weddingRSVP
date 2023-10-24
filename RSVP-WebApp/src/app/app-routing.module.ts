@@ -7,7 +7,7 @@ const routes: Routes = [
   {path:'', redirectTo:'add', pathMatch:'full'},
   {path:'add',component: GuestFormComponent },
   {path:'guest-list',component: GuestListComponent },
-  {path:'view-guest',component: ViewGuestComponent },
+  {path:'view-guest/:guestId',component: ViewGuestComponent },
   {path:"**", component: GuestFormComponent}
 ];
 

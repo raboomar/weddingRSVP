@@ -32,6 +32,14 @@ export class GuestService {
     ).pipe(retry(1), catchError(this.handleError))
    }
 
+   fetchGuestDetails (guestId:string):Observable<InviteeList>{
+    return this.http
+    .get<any>(
+      `${environment.apiUrl}/${guestId}`,
+      this.httpOptions
+    ).pipe(retry(1), catchError(this.handleError))
+   }
+
  handleError(error: any) {
   let errorMessage = '';
   if (error.error instanceof ErrorEvent) {

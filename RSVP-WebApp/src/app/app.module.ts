@@ -17,6 +17,7 @@ import { GuestListComponent } from './components/guest-list/guest-list.component
 import { MatTableModule } from '@angular/material/table'
 import {MatPaginatorModule} from '@angular/material/paginator';
 import { ViewGuestComponent } from './components/view-guest/view-guest.component';
+import {MatListModule} from '@angular/material/list';
 
 @NgModule({
   declarations: [
@@ -39,7 +40,8 @@ import { ViewGuestComponent } from './components/view-guest/view-guest.component
     MatToolbarModule,
     HttpClientModule,
     MatTableModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    MatListModule
     ],
   providers: [{
 

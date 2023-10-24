@@ -1,0 +1,10 @@
+.guest--detail--header--container{
+  margin-top: 50px;
+  padding-top: 25px;
+  text-align: center;
+}
+
+.mat-mdc-list{
+  margin: 0 !important;
+
+}
