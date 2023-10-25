@@ -1,30 +1,23 @@
-import os
 from email.message import EmailMessage
-import ssl
-import smtplib
+import os,ssl,smtplib
+from email.mime.text import MIMEText
+from email.mime.multipart import MIMEMultipart
+from email_html import html_body
 
 def send_email (gust_email):
-    sender = os.environ['email_sender']
+    sender_email = os.environ['email_sender']
     password = os.environ['email_password']
-    receiver =gust_email
+    receiver_email = gust_email
     subject = 'Thank you for RSVPing'
-    print(sender,password,receiver )
-    body = """
-     Thank you for RSVPing to the celebration of Rami and Dima
-     Thank you we look forward to seeing you.
+    message = MIMEMultipart("alternative")
+    message["Subject"] = subject
+    message["From"] = sender_email
+    message["To"] = receiver_email
+    html = html_body()
+    email_body = MIMEText(html, "html")
+    message.attach(email_body)
     
-      Date: June 2nd 2024 5:00pm
-      Location: Pinnacle Golf Club
-      1500 Pinnacle Club Dr, Grove City, OH 43123     
-    """
-    em = EmailMessage()
-    em['From'] = sender
-    em['To'] = receiver
-    em['Subject'] = subject
-    em.set_content(body)
-
     context = ssl.create_default_context()
-
     with smtplib.SMTP_SSL('smtp.gmail.com', 465, context=context) as smtp:
-        smtp.login(sender, password)
-        smtp.sendmail(sender,receiver,em.as_string())
+        smtp.login( sender_email, password)
+        smtp.sendmail( sender_email,receiver_email,message.as_string())
