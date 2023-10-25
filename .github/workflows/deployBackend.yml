@@ -28,7 +28,7 @@ jobs:
         working-directory: ./backend
         run: pip install -r requirements.txt
         
-     - name: Debug - List Directory Contents
+      - name: Debug - List Directory Contents
         run: ls
         
       - name: Zip the code
