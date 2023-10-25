@@ -1,4 +1,4 @@
-name: Zip and Upload to S3
+name: WebApp
 
 on:
   push:
@@ -6,38 +6,35 @@ on:
       - main
 
 jobs:
-  build:
+  deploy:
     runs-on: ubuntu-latest
     steps:
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v1
         with:
           aws-access-key-id: ${{ secrets.ACCESS_KEY }}
-          aws-secret-access-key: ${{ secrets.SECRET_ACCESS_KEY }}
+          aws-secret-access-key: ${{ secrets.SECRET_ACCESS_KEY}}
           aws-region: us-east-1
 
-      - name: Checkout code
+      - name: Checkout
         uses: actions/checkout@v2
 
-      - name: Set up Python
-        uses: actions/setup-python@v2
+      - name: Setup Node.js
+        uses: actions/setup-node@v2
         with:
-          python-version: 3.x
+          node-version: 14
 
       - name: Install dependencies
-        working-directory: ./backend
-        run: pip install -r requirements.txt
+        working-directory: ./RSVP-WebApp
+        run: npm install
 
-      - name: Zip the code
-        working-directory: ./backend
+      - name: Build
+        working-directory: ./RSVP-WebApp
+        run: npm run build
+      - name: Debug
         run: |
-          cd $GITHUB_WORKSPACE/backend
-          zip -r rsvp_lambda_code.zip .
-
-      - name: Empty S3 Bucket
+          ls -l ./RSVP-WebApp
+          ls -l ./RSVP-WebApp/dist
+      - name: Deploy
         if: success()
-        run: aws s3 rm s3://${{ secrets.AWS_S3_BUCKET }} --recursive
-
-      - name: Upload to S3
-        if: success()
-        run: aws s3 cp ./backend/rsvp_lambda_code.zip s3://${{ secrets.AWS_S3_BUCKET }}
+        run: aws s3 sync ./RSVP-WebApp/dist/rsvp-web-app s3://rami-dima-rsvp-web-app
