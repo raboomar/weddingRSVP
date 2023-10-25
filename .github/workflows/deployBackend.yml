@@ -34,8 +34,8 @@ jobs:
       - name: Zip the code
         working-directory: ./backend
         run: |
-          cd backend
-          zip -r my_code.zip .
+          cd ./backend
+          zip -r lambda_code.zip .
        
 
       - name: Upload to S3
