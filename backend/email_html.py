@@ -5,7 +5,7 @@ def html_body ():
     <body>
         <div style="display: flex; justify-content: center; text-align: center">
       <h3>
-        Thank you for RSVPing to the celebration of Rami and Dima
+        Thank you for RSVPing to Ramis & Dimas wedding.
         <br/>
         Date: June 2nd 2024 5:00pm
         <br />
