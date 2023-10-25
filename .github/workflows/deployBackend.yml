@@ -29,12 +29,14 @@ jobs:
         run: pip install -r requirements.txt
         
       - name: Debug - List Directory Contents
-        run: ls
-        
+        run: |
+          ls
+          cd ./backend
+          ls
       - name: Zip the code
         working-directory: ./backend
         run: |
-          cd ./backend
+          cd $GITHUB_WORKSPACE/backend
           zip -r lambda_code.zip .
        
 
