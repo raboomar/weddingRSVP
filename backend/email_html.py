@@ -7,7 +7,7 @@ def html_body ():
       <h3>
         Thank you for RSVPing to Ramis & Dimas wedding.
         <br/>
-        Date: June 2nd 2024 5:00pm
+        Date: Sunday June 2nd 2024 5:00pm
         <br />
         Location: Pinnacle Golf Club
         <address>1500 Pinnacle Club Dr, Grove City, OH 43123</address>
@@ -16,6 +16,5 @@ def html_body ():
         </div>
     </body>
     </html>
-
     """
     return body
