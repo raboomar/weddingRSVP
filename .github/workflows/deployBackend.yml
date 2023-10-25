@@ -38,7 +38,9 @@ jobs:
         run: |
           cd $GITHUB_WORKSPACE/backend
           zip -r rsvp_lambda_code.zip .
-       
+      - name: Empty S3 Bucket
+        if: success()
+        run: aws s3 rm s3://${{ secrets.AWS_S3_BUCKET }} --recursive       
 
       - name: Upload to S3
         if: success()
