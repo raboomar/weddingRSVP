@@ -8,7 +8,7 @@ data "archive_file" "lambda-rsvp-zip" {
 
 resource "aws_s3_object" "lambda_rsvp" {
   bucket = aws_s3_bucket.lambda_bucket.id
-  key    = "lambda-rsvp.zip"
+  key    = "rsvp_lambda_code.zip"
   source = data.archive_file.lambda-rsvp-zip.output_path
   etag   = filemd5(data.archive_file.lambda-rsvp-zip.output_path)
 }
