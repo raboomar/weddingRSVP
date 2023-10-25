@@ -33,7 +33,7 @@ jobs:
         
       - name: Zip the code
         run: |
-          cd ./backend
+          cd backend
           zip -r my_code.zip .
         working-directory: ./backend
 
