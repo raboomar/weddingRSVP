@@ -8,20 +8,17 @@ data "archive_file" "lambda-rsvp-zip" {
 
 resource "aws_s3_object" "lambda_rsvp" {
   bucket = aws_s3_bucket.lambda_bucket.id
-  key    = "lambda-rsvp.zip"
-  source = data.archive_file.lambda-rsvp-zip.output_path
-  etag   = filemd5(data.archive_file.lambda-rsvp-zip.output_path)
+  key    = "rsvp-lambda-code.zip"
 }
 
 
 resource "aws_lambda_function" "rsvp_service" {
-  function_name    = "rsvp_service"
-  s3_bucket        = aws_s3_bucket.lambda_bucket.id
-  s3_key           = aws_s3_object.lambda_rsvp.key
-  handler          = "main.lambda_handler"
-  runtime          = "python3.10"
-  source_code_hash = data.archive_file.lambda-rsvp-zip.output_base64sha256
-  role             = aws_iam_role.lambda_exec.arn
+  function_name = "rsvp_service"
+  s3_bucket     = aws_s3_bucket.lambda_bucket.id
+  s3_key        = aws_s3_object.lambda_rsvp.key
+  handler       = "main.lambda_handler"
+  runtime       = "python3.10"
+  role          = aws_iam_role.lambda_exec.arn
 
   environment {
     variables = {
