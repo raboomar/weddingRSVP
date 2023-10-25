@@ -14,7 +14,7 @@ jobs:
         with:
           aws-access-key-id: ${{ secrets.ACCESS_KEY }}
           aws-secret-access-key: ${{ secrets.SECRET_ACCESS_KEY}}
-          aws-region: us-east-1
+          aws-region: ${{ secrets.AWS_REGION }}
 
       - name: Checkout
         uses: actions/checkout@v2
@@ -31,10 +31,7 @@ jobs:
       - name: Build
         working-directory: ./RSVP-WebApp
         run: npm run build
-      - name: Debug
-        run: |
-          ls -l ./RSVP-WebApp
-          ls -l ./RSVP-WebApp/dist
+
       - name: Deploy
         if: success()
-        run: aws s3 sync ./RSVP-WebApp/dist/rsvp-web-app s3://rami-dima-rsvp-web-app
+        run: aws s3 sync ./RSVP-WebApp/dist/rsvp-web-app s3://${{ secrets.AWS_WEB_S3_BUCKET }}
