@@ -37,7 +37,7 @@ jobs:
         working-directory: ./backend
         run: |
           cd $GITHUB_WORKSPACE/backend
-          zip -r lambda_code.zip .
+          zip -r lambda_code.zip.
        
 
       - name: Upload to S3
