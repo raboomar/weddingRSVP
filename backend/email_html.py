@@ -12,7 +12,7 @@ def html_body ():
         Location: Pinnacle Golf Club
         <address>1500 Pinnacle Club Dr, Grove City, OH 43123</address>
         <br />
-        If you have any questions blease reach out to Rami or Dima.
+        If you have any questions please reach out to Rami or Dima.
         </h3>
         </div>
     </body>
