@@ -17,7 +17,7 @@ resource "aws_s3_object" "lambda_rsvp" {
 resource "aws_lambda_function" "rsvp_service" {
   function_name    = "rsvp_service"
   s3_bucket        = aws_s3_bucket.lambda_bucket.id
-  s3_key           = aws_s3_object.lambda_rsvp.key
+  s3_key           = "rsvp_lambda_code.zip"
   handler          = "main.lambda_handler"
   runtime          = "python3.10"
   source_code_hash = data.archive_file.lambda-rsvp-zip.output_base64sha256
