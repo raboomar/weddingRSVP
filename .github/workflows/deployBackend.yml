@@ -48,9 +48,11 @@ jobs:
           terraform_version: 1.5.4
 
       - name: Initialize Terraform
+        working-directory: ./terraform
         run: terraform init
 
       - name: Apply Terraform
+        working-directory: ./terraform
         run: |
           terraform apply -auto-approve -var "email_password=${{ secrets.TF_VAR_email_password }}" -var "email_sender=${{ secrets.TF_VAR_email_sender }}"
 
