@@ -41,3 +41,16 @@ jobs:
       - name: Upload to S3
         if: success()
         run: aws s3 cp ./backend/rsvp_lambda_code.zip s3://${{ secrets.AWS_S3_BUCKET }}
+
+      - name: Set up Terraform
+        uses: hashicorp/setup-terraform@v1
+        with:
+          terraform_version: 1.5.4
+
+      - name: Initialize Terraform
+        run: terraform init
+
+      - name: Apply Terraform
+        run: |
+          terraform apply -auto-approve -var "email_password=${{ secrets.TF_VAR_email_password }}" -var "email_sender=${{ secrets.TF_VAR_email_sender }}"
+
