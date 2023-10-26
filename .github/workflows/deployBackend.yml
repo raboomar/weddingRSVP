@@ -24,18 +24,6 @@ jobs:
         with:
           python-version: 3.x
 
-      # - name: Install dependencies
-      #   working-directory: ./backend
-      #   run: |
-      #     pip install --upgrade pip
-      #     pip install -r requirements.txt
-          
-      # - name: Clear Cache
-      #   uses: actions/cache@v2
-      #   with:
-      #     path: ~/backend/.cache/pip
-      #   if: ${{ failure() }}
-
       - name: Zip the code
         working-directory: ./backend
         run: |
