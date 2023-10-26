@@ -1,6 +1,5 @@
 resource "aws_s3_bucket" "lambda_bucket" {
-  bucket        = "rsvp-lambda-code-bucket"
-  force_destroy = true
+  bucket = "rsvp-lambda-code-bucket"
 }
 
 resource "aws_s3_bucket_public_access_block" "lambda_bucket" {
