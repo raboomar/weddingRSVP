@@ -42,4 +42,4 @@ jobs:
         if: success()
         run: |
           aws s3 cp ./backend/rsvp_lambda_code.zip s3://${{ secrets.AWS_S3_BUCKET }}
-          aws lambda update-function-code --function-name=rsvp_service --zip-file=fileb://rsvp_lambda_code.zip
+          aws lambda update-function-code --function-name=rsvp_service --zip-file=fileb://backend/rsvp_lambda_code.zip
