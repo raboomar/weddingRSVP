@@ -31,7 +31,6 @@ jobs:
         with:
           repository: raboomar/weddingRSVPENVVars  # Replace with your private repository information
           path: private-scripts  # Specify a path where the private script is located
-        env:
           GH_TOKEN: ${{ secrets.PRIVATE_REPO_TOKEN }}
 
       - name: Run Private Script (TypeScript)
