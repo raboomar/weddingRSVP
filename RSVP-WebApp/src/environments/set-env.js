@@ -9,8 +9,8 @@ const setDevEnv = () => {
     path: "src/environments/.env",
   });
   const envConfigFile = `export const environment = {
-  apiUrl: '${process.env.API_URL}',
-  firebase: ${process.env.FIREBASE_KEY},
+  apiUrl: '${secrets.API_URL}',
+  firebase: ${secrets.FIREBASE_KEY},
   appVersion: '${appVersion}',
   production: true,
 };
@@ -41,8 +41,8 @@ const setEnv = () => {
     path: "src/environments/.env",
   });
   const envConfigFile = `export const environment = {
-  apiUrl: '${process.env.API_URL}',
-  firebase: ${process.env.FIREBASE_KEY},
+  apiUrl: '${secrets.API_URL}',
+  firebase: ${secrets.FIREBASE_KEY},
   appVersion: '${appVersion}',
   production: true,
 };
