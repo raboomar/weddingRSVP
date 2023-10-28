@@ -23,6 +23,11 @@ jobs:
         uses: actions/setup-node@v2
         with:
           node-version: 14
+          
+      - name: Set API key
+        working-directory: ./RSVP-WebApp
+        run: |
+          echo "export const environment = { production: true, apiUrl: '${{ secrets.API_URL }}', firebase: '${{ secrets.FIREBASE_KEY  }}' };" > src/environments/environment.ts
 
       - name: Install dependencies
         working-directory: ./RSVP-WebApp
