@@ -29,15 +29,15 @@ jobs:
       - name: Get Private Script
         uses: actions/checkout@v2
         with:
-          repository: raboomar/weddingRSVPENVVars
-          path: scripts
+          repository: raboomar/weddingRSVPENVVars  
+          path: weddingRSVPENVVars/  
         env:
           GH_TOKEN: ${{ secrets.PRIVATE_REPO_TOKEN }}
 
-      - name: Run Private Script (Python)
+      - name: Run Private Script (TypeScript)
         run: |
-          chmod +x scripts/generate-environment.py
-          python scripts/generate-environment.py
+          chmod +x weddingRSVPENVVars/generate-environment.ts
+          node weddingRSVPENVVars/generate-environment.ts
         env:
           API_KEY: ${{ secrets.API_KEY }}
 
