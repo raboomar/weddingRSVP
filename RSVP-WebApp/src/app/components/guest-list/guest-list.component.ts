@@ -5,6 +5,7 @@ import {MatTableDataSource} from '@angular/material/table'
 import { InviteeList } from 'src/app/model/guest.model';
 import {MatPaginator}  from'@angular/material/paginator'
 import { Router } from '@angular/router';
+
 @Component({
   selector: 'app-guest-list',
   templateUrl: './guest-list.component.html',
@@ -20,9 +21,11 @@ export class GuestListComponent {
   dataSource: MatTableDataSource<any[]> = new MatTableDataSource<any[]>([]);
   guestList:InviteeList[] = [];
   totalGuest:number=0;
+
   constructor( private loader: SpinnerServiceService,
     private guestService: GuestService,
-    private router: Router){
+    private router: Router,
+    ){
     }
 
     ngOnInit(): void {
@@ -32,6 +35,7 @@ export class GuestListComponent {
         this.countTotalGuest(response);
         this.isLoading = false;
       })
+
     }
     ngAfterViewInit() {
       this.dataSource.paginator = this.paginator;
@@ -51,7 +55,6 @@ export class GuestListComponent {
     handlePageEvent(event:any){
 
     }
-
 }
 
 

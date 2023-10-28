@@ -14,6 +14,7 @@ export class ViewGuestComponent {
   guest: InviteeList[];
   loading = this.loader.loading$
   isLoading:boolean = false
+
   constructor(private activatedRoute: ActivatedRoute,
     private guestService:GuestService,
     private loader: SpinnerServiceService){
@@ -23,7 +24,7 @@ export class ViewGuestComponent {
     this.isLoading = true
   this.guestId =  this.activatedRoute.snapshot.paramMap.get('guestId') || '';
     this.guestService.fetchGuestDetails(this.guestId).subscribe((response)=>{
-      this.guest = response;
+      this.guest = [response];
       this.isLoading = false
     })
 

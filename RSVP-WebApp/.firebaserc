@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "rsvpauth-29add": {
+      "hosting": {
+        "RSVP-WebApp": [
+          "rsvpauth-29add"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "rsvpauth-29add"
+  }
+}

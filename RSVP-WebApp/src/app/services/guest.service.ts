@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable, catchError, retry, throwError } from 'rxjs';
 import { Guest, InviteeList } from '../model/guest.model';
 import { environment } from 'src/environments/environment';
+
 @Injectable({
   providedIn: 'root'
 })
@@ -40,6 +41,7 @@ export class GuestService {
     ).pipe(retry(1), catchError(this.handleError))
    }
 
+
  handleError(error: any) {
   let errorMessage = '';
   if (error.error instanceof ErrorEvent) {
@@ -53,3 +55,4 @@ export class GuestService {
   });
 }
 }
+

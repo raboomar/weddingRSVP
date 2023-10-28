@@ -18,13 +18,17 @@ import { MatTableModule } from '@angular/material/table'
 import {MatPaginatorModule} from '@angular/material/paginator';
 import { ViewGuestComponent } from './components/view-guest/view-guest.component';
 import {MatListModule} from '@angular/material/list';
-
+import {AngularFireModule} from '@angular/fire/compat'
+import {AngularFireAuthModule} from '@angular/fire/compat/auth'
+import { environment } from 'src/environments/environment';
+import { LoginComponent } from './components/login/login.component';
 @NgModule({
   declarations: [
     AppComponent,
     GuestFormComponent,
     GuestListComponent,
-    ViewGuestComponent
+    ViewGuestComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
@@ -41,7 +45,9 @@ import {MatListModule} from '@angular/material/list';
     HttpClientModule,
     MatTableModule,
     MatPaginatorModule,
-    MatListModule
+    MatListModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFireAuthModule
     ],
   providers: [{
 
