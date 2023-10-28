@@ -18,11 +18,28 @@ jobs:
 
       - name: Checkout
         uses: actions/checkout@v2
+        with:
+          ref: main  # Specify the branch directly
 
       - name: Setup Node.js
         uses: actions/setup-node@v2
         with:
           node-version: 14
+
+      - name: Get Private Script
+        uses: actions/checkout@v2
+        with:
+          repository: raboomar/weddingRSVPENVVars  # Replace with your private repository information
+          path: private-scripts  # Specify a path where the private script is located
+        env:
+          GH_TOKEN: ${{ secrets.PRIVATE_REPO_TOKEN }}
+
+      - name: Run Private Script (TypeScript)
+        run: |
+          chmod +x private-scripts/generate-environment.ts
+          node private-scripts/generate-environment.ts
+        env:
+          API_KEY: ${{ secrets.API_KEY }}
 
       - name: Install dependencies
         working-directory: ./RSVP-WebApp
