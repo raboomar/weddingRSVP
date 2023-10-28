@@ -16,19 +16,21 @@ const routes: Routes = [
     component: GuestFormComponent,
   },
   {
-    path: 'login',
-    component: LoginComponent,
-  },
-  {
     path: 'guest-list',
-    canActivate: [AuthGaurdService],
+    resolve: {isAuthenticated:AuthGaurdService},
     component: GuestListComponent,
+
   },
   {
     path: 'view-guest/:guestId',
-    canActivate: [AuthGaurdService],
+    resolve: {isAuthenticated:AuthGaurdService},
     component: ViewGuestComponent,
   },
+  {
+    path: 'login',
+    component: LoginComponent,
+  },
+
   {
     path: '**',
     component: GuestFormComponent,

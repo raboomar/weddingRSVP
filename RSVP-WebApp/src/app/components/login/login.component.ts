@@ -25,12 +25,11 @@ export class LoginComponent {
     }
 
     ngOnInit(): void {
-      this.isLoading = true;
-
       this.form = this.formBuilder.group({
         email: ['', [Validators.required, Validators.email]],
         password: ['', [Validators.required]]
       });
+
     }
 
     login() {
@@ -41,11 +40,10 @@ export class LoginComponent {
         password: this.form.value.password
       }).subscribe({ next: (res)=>{
         // console.log(res);
-        this.authenticationService.setIsAuthenticated(true)
+
         this.isLoading = false
         this.router.navigate(['guest-list'])
       },error:(error)=>{
-        this.authenticationService.setIsAuthenticated(false)
         this.isLoggingIn = false;
         this.isLoading = false
         this.isError = true

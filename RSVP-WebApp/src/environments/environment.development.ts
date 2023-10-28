@@ -7,6 +7,7 @@ export const environment = {
     projectId: "rsvpauth-29add",
     storageBucket: "rsvpauth-29add.appspot.com",
     messagingSenderId: "254311240097",
-    appId: "1:254311240097:web:e62ed6c3744f7e0909bbe0"
+    appId: "1:254311240097:web:e62ed6c3744f7e0909bbe0",
+    persistence: 'local'
   }
 };

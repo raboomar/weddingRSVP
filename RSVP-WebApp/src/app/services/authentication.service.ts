@@ -1,21 +1,27 @@
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
+import { Router } from '@angular/router';
 import { Observable, catchError, from, throwError } from 'rxjs';
 import { FirebaseError, SignIn } from 'src/app/model/signIn.model';
 @Injectable({
   providedIn: 'root'
 })
 export class AuthenticationService {
-  private isAuthenticated:boolean;
-  constructor(private auth: AngularFireAuth) { }
+  constructor(private auth: AngularFireAuth) {
+   }
 
-    public isRouteAuthenticated():boolean{
-      return this.isAuthenticated;
-    }
 
-    public setIsAuthenticated(isAuth:boolean):void{
-      this.isAuthenticated = isAuth;
-    }
+  checkAuthentication(): Promise<any> {
+    return new Promise((resolve, reject) => {
+      this.auth.onAuthStateChanged(user => {
+        if (user) {
+          resolve(user);
+        } else {
+          resolve(null);
+        }
+      });
+    });
+  }
 
     signIn(params: SignIn): Observable<any> {
       return from(this.auth.signInWithEmailAndPassword(
