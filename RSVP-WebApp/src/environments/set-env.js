@@ -24,7 +24,7 @@ const setDevEnv = () => {
       throw err;
     } else {
       console.log(
-        `Angular environment.ts file generated correctly at ${envConfigFile} \n ${envConfigFile.apiUrl}  \n ${envConfigFile.firebase} `
+        `Angular environment.ts file generated correctly at ${targetPath} \n`
       );
     }
   });
