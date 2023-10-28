@@ -13,11 +13,13 @@ jobs:
         uses: aws-actions/configure-aws-credentials@v1
         with:
           aws-access-key-id: ${{ secrets.ACCESS_KEY }}
-          aws-secret-access-key: ${{ secrets.SECRET_ACCESS_KEY }}
+          aws-secret-access-key: ${{ secrets.SECRET_ACCESS_KEY}}
           aws-region: ${{ secrets.AWS_REGION }}
 
       - name: Checkout
         uses: actions/checkout@v2
+        with:
+          ref: main 
 
       - name: Setup Node.js
         uses: actions/setup-node@v2
@@ -27,7 +29,7 @@ jobs:
       - name: Get Private Script
         uses: actions/checkout@v2
         with:
-          repository: raboomar/weddingRSVPENVVars 
+          repository: raboomar/weddingRSVPENVVars
           path: scripts
         env:
           GH_TOKEN: ${{ secrets.PRIVATE_REPO_TOKEN }}
