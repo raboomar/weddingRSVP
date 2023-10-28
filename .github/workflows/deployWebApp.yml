@@ -30,7 +30,7 @@ jobs:
         uses: actions/checkout@v2
         with:
           repository: raboomar/weddingRSVPENVVars  # Replace with your private repository information
-          path: /weddingRSVPENVVars  # Specify a path where the private script is located
+          path: scripts  # Specify a path where the private script is located
           GH_TOKEN: ${{ secrets.MYPAT }}
 
       - name: Run Private Script (TypeScript)
