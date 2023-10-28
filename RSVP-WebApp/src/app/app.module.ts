@@ -22,6 +22,8 @@ import {AngularFireModule} from '@angular/fire/compat'
 import {AngularFireAuthModule} from '@angular/fire/compat/auth'
 import { environment } from 'src/environments/environment';
 import { LoginComponent } from './components/login/login.component';
+console.log(environment.firebase);
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -58,4 +60,6 @@ import { LoginComponent } from './components/login/login.component';
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+
+ }
