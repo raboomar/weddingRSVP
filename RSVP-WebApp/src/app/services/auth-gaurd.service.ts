@@ -9,17 +9,19 @@ export class AuthGaurdService  {
 
   constructor(
     private authenticationService:AuthenticationService,
-    private router: Router
+    private router: Router,
   ) { }
 
-  canActivate(
-    next: ActivatedRouteSnapshot,
-    state: RouterStateSnapshot): boolean {
-    if(this.authenticationService.isRouteAuthenticated()){
-      return true;
-    }
-    this.router.navigate(['login'])
-    return false;
-  }
 
+  async resolve(route: ActivatedRouteSnapshot): Promise<boolean> {
+    const user = await this.authenticationService.checkAuthentication();
+    if (user) {
+      return true;
+    } else {
+      this.router.navigate(['/login']);
+      return false;
+    }
+  }
 }
+
+

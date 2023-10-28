@@ -3,7 +3,7 @@
   *ngIf="loading | async"
 ></mat-progress-spinner>
 
-<div class="login--container">
+<div *ngIf="!isLoading" class="login--container">
   <form [formGroup]="form">
     <h1>﷽</h1>
     <h1>Sign In</h1>
