@@ -21,12 +21,40 @@
         <span matListItemLine>{{ guestDetails.email }} </span>
       </mat-list-item>
       <span>Guest: </span>
-      <mat-list *ngFor="let guestDetail of guestDetails.guest" role="list">
-        <mat-list-item role="listitem">
+
+      <div
+        *ngFor="let guestDetail of guestDetails.guest"
+        role="list"
+        class="detail--action"
+      >
+        <span>
           {{ guestDetail.firstName | titlecase }}
           {{ guestDetail.lastName | titlecase }}
+        </span>
+        <span>
+          <button mat-icon-button (click)="deleteGuest(guestDetails.id)">
+            <mat-icon>delete_forever</mat-icon>
+          </button>
+        </span>
+      </div>
+
+      <!-- <mat-list
+        *ngFor="let guestDetail of guestDetails.guest"
+        role="list"
+        class="detail--action"
+      >
+        <mat-list-item role="listitem">
+          <span>
+            {{ guestDetail.firstName | titlecase }}
+            {{ guestDetail.lastName | titlecase }}
+          </span>
+          <span>
+            <button class="mat-icon" mat-icon-button>
+              <mat-icon>delete_forever</mat-icon>
+            </button>
+          </span>
         </mat-list-item>
-      </mat-list>
+      </mat-list> -->
     </mat-list>
   </div>
 </div>

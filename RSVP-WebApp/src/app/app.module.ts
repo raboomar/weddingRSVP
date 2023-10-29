@@ -22,7 +22,8 @@ import {AngularFireModule} from '@angular/fire/compat'
 import {AngularFireAuthModule} from '@angular/fire/compat/auth'
 import { environment } from 'src/environments/environment';
 import { LoginComponent } from './components/login/login.component';
-console.log(environment.firebase);
+import {MatSnackBarModule} from '@angular/material/snack-bar';
+import { SnackbarComponent } from './components/snackbar/snackbar.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ console.log(environment.firebase);
     GuestFormComponent,
     GuestListComponent,
     ViewGuestComponent,
-    LoginComponent
+    LoginComponent,
+    SnackbarComponent
   ],
   imports: [
     BrowserModule,
@@ -49,7 +51,8 @@ console.log(environment.firebase);
     MatPaginatorModule,
     MatListModule,
     AngularFireModule.initializeApp(environment.firebase),
-    AngularFireAuthModule
+    AngularFireAuthModule,
+    MatSnackBarModule
     ],
   providers: [{
 
