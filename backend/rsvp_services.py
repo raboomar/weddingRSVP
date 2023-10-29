@@ -30,7 +30,7 @@ def add_new_guest (guest):
     send_email(guest['email'])
 
 def delete_guest (guest_id): 
-     print('🚮 Deleting guest with id %(guest_id)....')
+     print(f'🚮 Deleting guest with id {guest_id}....')
      table.delete_item(Key={"id": guest_id})
-     print('✅ Deleted guest with id %(guest_id)....')
+     print(f'✅ Deleted guest with id {guest_id}....')
  
