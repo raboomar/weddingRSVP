@@ -41,6 +41,14 @@ export class GuestService {
     ).pipe(retry(1), catchError(this.handleError))
    }
 
+   deleteGuest (guestId:string):Observable<InviteeList>{
+    return this.http
+    .delete<any>(
+      `${environment.apiUrl}/${guestId}`,
+      this.httpOptions
+    ).pipe(retry(1), catchError(this.handleError))
+   }
+
 
  handleError(error: any) {
   let errorMessage = '';
