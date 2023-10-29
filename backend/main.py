@@ -1,5 +1,5 @@
 import json
-from rsvp_services import add_new_guest, fetch_all_Guest, fetch_guest
+from rsvp_services import add_new_guest, fetch_all_Guest, fetch_guest,delete_guest
 
 
 def lambda_handler(event, context):
@@ -29,7 +29,12 @@ def lambda_handler(event, context):
             guest_list = fetch_guest(guest_id) 
             response['statusCode'] = 200
             response['body'] = json.dumps(guest_list)
-            return response    
+            return response
+        case "DELETE /guest/{id}":
+            guest_id = event['pathParameters']['id']
+            delete_guest( guest_id)
+            response['statusCode'] = 200
+            return response
         case _:
             print("No routes match....")
             return {
