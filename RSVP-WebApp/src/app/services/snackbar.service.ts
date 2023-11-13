@@ -14,8 +14,6 @@ export class SnackbarService {
     backgroundColor: string ,
     textColor: string
     ) {
-      console.log(backgroundColor);
-
     const config = new MatSnackBarConfig();
     config.duration = duration
     config.verticalPosition = 'top'
