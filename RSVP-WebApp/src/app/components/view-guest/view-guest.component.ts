@@ -34,12 +34,10 @@ export class ViewGuestComponent {
   }
 
   deleteGuest (guestId:string){
-
     this.isLoading = true;
    if (this.guest[0].guest.length ===1){
     this.guestService.deleteGuest(guestId).subscribe({
       next: (response) =>{
-        console.log(response);
         this.isLoading = false;
       },
       error:error => console.log(error),

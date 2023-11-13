@@ -24,6 +24,8 @@ import { environment } from 'src/environments/environment';
 import { LoginComponent } from './components/login/login.component';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import { SnackbarComponent } from './components/snackbar/snackbar.component';
+import {MatCardModule} from '@angular/material/card'
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 @NgModule({
   declarations: [
@@ -52,7 +54,9 @@ import { SnackbarComponent } from './components/snackbar/snackbar.component';
     MatListModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireAuthModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatCardModule,
+    FlexLayoutModule
     ],
   providers: [{
 
