@@ -11,14 +11,12 @@
   <div *ngIf="!isLoading">
     <mat-list role="list" *ngFor="let guestDetails of guest">
       <mat-list-item role="listitem">
-        <span matListItemTitle>Date Rsvp:</span>
-        <span matListItemLine
-          >{{ guestDetails.dateRsvp | date : "MMM d, y, h:mm:ss a" }}
-        </span>
+        <span>Date Rsvp: </span>
+        <span>{{ guestDetails.dateRsvp | date : "MMM d, y, h:mm:ss a" }} </span>
       </mat-list-item>
       <mat-list-item role="listitem">
-        <span matListItemTitle>Email:</span>
-        <span matListItemLine>{{ guestDetails.email }} </span>
+        <span>Email: </span>
+        <span>{{ guestDetails.email }} </span>
       </mat-list-item>
       <span>Guest: </span>
 
@@ -37,24 +35,6 @@
           </button>
         </span>
       </div>
-
-      <!-- <mat-list
-        *ngFor="let guestDetail of guestDetails.guest"
-        role="list"
-        class="detail--action"
-      >
-        <mat-list-item role="listitem">
-          <span>
-            {{ guestDetail.firstName | titlecase }}
-            {{ guestDetail.lastName | titlecase }}
-          </span>
-          <span>
-            <button class="mat-icon" mat-icon-button>
-              <mat-icon>delete_forever</mat-icon>
-            </button>
-          </span>
-        </mat-list-item>
-      </mat-list> -->
     </mat-list>
   </div>
 </div>

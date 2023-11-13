@@ -19,7 +19,6 @@ export class GuestListComponent {
 
   loading = this.loader.loading$
   isLoading:boolean = false
-  displayedColumns: string[] = ['Guest #', 'name', 'email', 'RSVPDate','action'];
   dataSource: MatTableDataSource<InviteeList> = new MatTableDataSource<InviteeList>([]);
   guestList:InviteeList[] = [];
   totalFamilies: number = 0
@@ -34,8 +33,8 @@ export class GuestListComponent {
     ngOnInit(): void {
       this.isLoading = true;
       this.guestService.fetchGuestList().subscribe(response=>{
-        this.guestList = response;
-        this.dataSource.data = response;
+        this.guestList = this.sortByDate( response);
+        this.dataSource.data =this.sortByDate( response);
         this.totalFamilies = response.length;
         this.countTotalGuest(response);
         this.isLoading = false;
@@ -61,6 +60,14 @@ export class GuestListComponent {
       const startIndex = event.pageIndex * event.pageSize;
       const endIndex = startIndex + event.pageSize;
       this.dataSource.data = this.guestList.slice(startIndex, endIndex);
+    }
+
+    sortByDate(data: InviteeList[]): InviteeList[] {
+      return data.sort((a, b) => {
+        const dateA = a.dateRsvp ? new Date(a.dateRsvp).getTime() : 0;
+        const dateB = b.dateRsvp ? new Date(b.dateRsvp).getTime() : 0;
+        return dateB - dateA ;
+      });
     }
 }
 
