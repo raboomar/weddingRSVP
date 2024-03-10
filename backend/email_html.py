@@ -3,6 +3,7 @@ def html_body ():
     body =  """\
    <html>
     <body>
+      <div >
         <div style="display: flex; justify-content: center; text-align: center">
       <h3>
         Thank you for RSVPing to Rami & Dima's wedding.
@@ -12,8 +13,16 @@ def html_body ():
         Location: Pinnacle Golf Club
         <address>1500 Pinnacle Club Dr, Grove City, OH 43123</address>
         <br />
-        If you have any questions please reach out to Rami or Dima.
+        Your presence at our wedding is the greatest gift of all. However, should you wish to honour us with a gift, envelope gifts are preferred.  
         </h3>
+         </div>
+        <div style="display: flex;">
+        <h3>
+        Best regards, 
+         <br />
+        Rami and Dima
+        </h3>
+    </div>
         </div>
     </body>
     </html>
