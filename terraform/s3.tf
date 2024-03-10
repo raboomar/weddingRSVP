@@ -13,7 +13,6 @@ resource "aws_s3_bucket_public_access_block" "lambda_bucket" {
 resource "aws_s3_bucket" "rsvp_web_app" {
   bucket        = "rami-dima-rsvp-web-app"
   force_destroy = true
-
 }
 
 resource "aws_s3_bucket_website_configuration" "rsvp_web_app_website_configuration" {
@@ -54,26 +53,20 @@ resource "aws_s3_bucket_cors_configuration" "rsvp_web_app_cors_configuration" {
 
 resource "aws_s3_bucket_policy" "rsvp_web_app_policy" {
   bucket = aws_s3_bucket.rsvp_web_app.id
-  policy = data.aws_iam_policy_document.rsvp_web_app_s3_polic.json
-}
-resource "aws_s3_bucket_public_access_block" "rsvp_web_app_public_access_block" {
-  bucket                  = aws_s3_bucket.rsvp_web_app.id
-  block_public_acls       = false
-  block_public_policy     = false
-  ignore_public_acls      = false
-  restrict_public_buckets = false
+  policy = data.aws_iam_policy_document.rsvp_web_app_s3_policy.json
 }
 
-data "aws_iam_policy_document" "rsvp_web_app_s3_polic" {
+
+data "aws_iam_policy_document" "rsvp_web_app_s3_policy" {
   statement {
     sid       = ""
     effect    = "Allow"
     actions   = ["s3:GetObject"]
     resources = ["${aws_s3_bucket.rsvp_web_app.arn}/*"]
     principals {
-      type        = "*"
-      identifiers = ["*"]
+      type        = "AWS"
+      identifiers = [aws_cloudfront_origin_access_identity.rsvp_app_oci.iam_arn]
     }
   }
-  depends_on = [aws_s3_bucket_public_access_block.rsvp_web_app_public_access_block]
+
 }
