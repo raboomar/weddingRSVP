@@ -12,8 +12,6 @@ def html_body ():
         <br />
         Location: Pinnacle Golf Club
         <address>1500 Pinnacle Club Dr, Grove City, OH 43123</address>
-        <br />
-        Your presence at our wedding is the greatest gift of all. However, should you wish to honour us with a gift, envelope gifts are preferred.  
         </h3>
          </div>
         <div style="display: flex;">
