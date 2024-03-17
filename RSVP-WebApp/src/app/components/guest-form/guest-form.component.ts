@@ -33,7 +33,7 @@ export class GuestFormComponent {
 
     this.route.data.subscribe(data => {
       const guestType = data['guestType'];
-      this.guestLimit = guestType === 'friends' ? 2 : 6;
+      this.guestLimit = guestType === 'family' ? 6 : 2;
     });
   }
 

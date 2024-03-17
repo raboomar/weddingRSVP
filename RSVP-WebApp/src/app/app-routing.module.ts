@@ -8,7 +8,7 @@ import { AuthGaurdService } from './services/auth-gaurd.service';
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'add',
+    redirectTo: 'add/friends',
     pathMatch: 'full',
   },
   {
