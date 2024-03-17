@@ -12,9 +12,16 @@ const routes: Routes = [
     pathMatch: 'full',
   },
   {
-    path: 'add',
+    path: 'add/friends',
     component: GuestFormComponent,
+    data: { guestType: 'friends' }
   },
+  {
+    path: 'add/family',
+    component: GuestFormComponent,
+    data: { guestType: 'family' }
+  },
+
   {
     path: 'guest-list',
     resolve: {isAuthenticated:AuthGaurdService},

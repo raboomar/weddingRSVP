@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { ActivatedRoute } from '@angular/router';
 import { Guest } from 'src/app/model/guest.model';
 import { GuestService } from 'src/app/services/guest.service';
 import { SpinnerServiceService } from 'src/app/services/spinner.service';
@@ -14,7 +15,7 @@ export class GuestFormComponent {
   isLoading:boolean = false
   succuss:boolean =false
   loading = this.loader.loading$
-
+  guestLimit: number = 2;
   email = new FormControl('', [Validators.required, Validators.email]);
   public guestForm: FormGroup =new FormGroup({});
   public validationMsgs = {
@@ -23,10 +24,16 @@ export class GuestFormComponent {
 
   constructor( private formBuilder: FormBuilder,
      private loader: SpinnerServiceService,
-     private guestService:GuestService) { }
+     private guestService:GuestService,
+     private route: ActivatedRoute) { }
   ngOnInit() {
     this.guestForm = this.formBuilder.group({
       guestName: this.formBuilder.array([this.createGuestFormGroup()])
+    });
+
+    this.route.data.subscribe(data => {
+      const guestType = data['guestType'];
+      this.guestLimit = guestType === 'friends' ? 2 : 6;
     });
   }
 
@@ -41,7 +48,7 @@ export class GuestFormComponent {
 
   public addguestFormGroup() {
     const guestName = this.guestForm.get('guestName') as FormArray
-    if (guestName.length <= 6){
+    if (guestName.length < this.guestLimit){
       const newGuest = this.guestForm.get('guestName') as FormArray
       newGuest.push(this.createGuestFormGroup())
     }
