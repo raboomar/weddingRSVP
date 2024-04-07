@@ -12,6 +12,6 @@ export interface InviteeList{
   guest:Invitee[];
   email:string;
   id:string;
-  dateRsvp?:string;
+  dateRsvp:string;
 }
 export interface InviteeList extends Array<InviteeList>{}

@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule,Component } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
@@ -24,7 +24,7 @@ import { environment } from 'src/environments/environment';
 import { LoginComponent } from './components/login/login.component';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import { SnackbarComponent } from './components/snackbar/snackbar.component';
-
+import {MatExpansionModule} from '@angular/material/expansion';
 @NgModule({
   declarations: [
     AppComponent,
@@ -52,7 +52,8 @@ import { SnackbarComponent } from './components/snackbar/snackbar.component';
     MatListModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireAuthModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatExpansionModule
     ],
   providers: [{
 

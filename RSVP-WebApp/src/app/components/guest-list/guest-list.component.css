@@ -19,3 +19,21 @@ td ,th{
   color: rgb(122, 98, 27)
 }
 
+.example-headers-align {
+
+  width: 90vw;
+  margin: 10px;
+  padding: 10px;
+
+  /* display: flex; */
+  /* justify-content: space-between; */
+  /* align-items: stretch; */
+
+
+}
+.guest-list{
+  /* background-color: aqua; */
+  display: flex;
+  flex-wrap: wrap;
+  justify-content:space-evenly ;
+}
