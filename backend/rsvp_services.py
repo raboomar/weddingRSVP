@@ -49,7 +49,7 @@ def add_new_guest(guest):
         )
         print("Sending email to: ", guest)
         send_email(guest['email'])
-        return build_response(201, reservation.to_dict())
+        return build_response(201, json.dumps(reservation.to_dict()))
     except botocore.exceptions.ClientError as error:
         print(f'Something went wrong.{error}')
         build_response(500, [])
