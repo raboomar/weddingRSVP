@@ -106,7 +106,7 @@
   </form>
   <div class="btn--container">
     <button
-      [disabled]="!guestForm.valid"
+      [disabled]="!guestForm.valid || !email.valid"
       mat-raised-button
       class="submit-btn"
       (click)="addGuest()"
